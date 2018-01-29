@@ -38,7 +38,7 @@ const Footer = () => {
 			<div className='footer-copyright'>
 				<div className='container'>
 					<span>© 2018 Ali Darvishi</span>
-					<span className='right'>License MIT</span>
+					<a href='https://opensource.org/licenses/MIT' className='right white-text' target='_blank' rel='noopener noreferrer'>License MIT</a>
 				</div>
 			</div>
 		</footer>

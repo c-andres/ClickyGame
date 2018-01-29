@@ -28,24 +28,35 @@ class App extends Component {
 		this.setState({ characters: _.shuffle(characters) });
 	};
 
+	topScoreUpdater(currentScore, currentTopScore, name) {
+		currentScore++;
+		_.delay(() => {
+			this.setState({ info: 'Choose your next character!' });
+		}, 500);
+		if (currentScore >= currentTopScore) {
+			return this.setState({ score: currentScore, topScore: currentScore, info: `${name} (Correct!)` });
+		};
+		return this.setState({ score: currentScore, info: `${name} (Correct!)` });
+	};
+
 	checkForDuplicate(name) {
 		if (this.state.selectedCharacters.indexOf(name) === -1) {
 			this.state.selectedCharacters.push(name);
-			this.setState({ score: this.state.score + 1, info: 'Correct!' });
-			if (this.state.score > this.state.topScore) {
-				this.setState({ topScore: this.state.score });
+			this.topScoreUpdater(this.state.score, this.state.topScore, name);
+			if (this.state.selectedCharacters.length === characters.length) {
+				this.setState({ selectedCharacters: [] });
 			};
 		} else {
-			console.log('Wrong!');
-			this.setState({ topScore: this.state.score, score: 0, selectedCharacters: [], info: 'Wrong!' });
+			_.delay(() => {
+				this.setState({ info: 'Try Again!' });
+			}, 500);
+			this.setState({ score: 0, selectedCharacters: [], info: `${name} (Duplicate)!` });
 		}
 		this.shuffleCharacters();
 	};
 
 	handleSelectCharacters(name) {
-		console.log(name);
 		this.checkForDuplicate(name);
-		console.log(this.state.selectedCharacters);
 	};
 
 	render() {
@@ -57,6 +68,7 @@ class App extends Component {
 					message={this.state.info}
 				/>
 				<Cover />
+				<div className="row"></div>
 				<Container
 					colors={colors}
 					characters={this.state.characters}
