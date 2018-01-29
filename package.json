@@ -2,7 +2,7 @@
 	"name": "clicky-game",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://erfaanism.github.io/ClickyGame",
+	"homepage": "https://c-andres.github.io/ClickyGame",
 	"dependencies": {
 		"gh-pages": "^1.1.0",
 		"lodash": "^4.17.4",

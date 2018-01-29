@@ -6,7 +6,7 @@ This game is a memory game built with React. All of the characters are from Sout
 
 ## Deployed on Github Pages
 
-[Play](https://erfaanism.github.io/ClickyGame/)
+[Play](https://c-andres.github.io/ClickyGame/)
 
 ## React Structure
 
